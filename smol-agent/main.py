@@ -2,6 +2,7 @@ from smolagents import CodeAgent, DuckDuckGoSearchTool, VisitWebpageTool, Infere
 from src.tools.todo_list import add_todos, mark_todo_done, check_done_todos, check_todos
 from src.tools.file_ops import write_file, create_folder
 from src.tools.blender_ops import run_blender_script
+from src.tools.judge_ops import check_goal_done
 from datetime import datetime
 import sys
 import os
@@ -40,7 +41,7 @@ def main():
     #     max_new_tokens=1000
     # )
     agent = CodeAgent(
-        tools=[add_todos, mark_todo_done, check_done_todos, check_todos, DuckDuckGoSearchTool(), VisitWebpageTool(), write_file, create_folder, run_blender_script],
+        tools=[add_todos, mark_todo_done, check_done_todos, check_todos, DuckDuckGoSearchTool(), VisitWebpageTool(), write_file, create_folder, run_blender_script, check_goal_done],
         model=model,
         add_base_tools=True,
         max_steps=20
