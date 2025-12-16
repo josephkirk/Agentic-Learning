@@ -4,10 +4,13 @@ import os
 @tool
 def write_file(content: str, filename: str) -> str:
     """
-    Writes content to a file with the given filename.
+    Writes text content to a file. 
+    IMPORTANT: This will overwrite the file if it already exists.
     Args:
-        content: The text content to write to the file.
-        filename: The name of the file to save (e.g., 'script.py', 'notes.md').
+        content: The text content to write.
+        filename: The absolute or relative path to the file (e.g., 'Output/script.py').
+    Returns:
+        A success message or an error message.
     """
     try:
         with open(filename, 'w', encoding='utf-8') as f:
@@ -20,9 +23,12 @@ def write_file(content: str, filename: str) -> str:
 @tool
 def create_folder(folder_path: str) -> str:
     """
-    Creates a new folder at the specified path.
+    Creates a new directory at the specified path. 
+    Safe to call if the folder already exists.
     Args:
-        folder_path: The path of the folder to create.
+        folder_path: The absolute or relative path of the folder to create.
+    Returns:
+        A success message or an error message.
     """
     try:
         os.makedirs(folder_path, exist_ok=True)

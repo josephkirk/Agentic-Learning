@@ -6,9 +6,11 @@ done = []
 @tool
 def add_todos(new_todos: list[str]) -> str:
     """
-    Add an array of todos to the todo list.
+    Add new tasks to the todo list.
     Args:
-        new_todos: The array of new todos to add to the todo list.
+        new_todos: A list of strings, where each string is a distinct task to be added.
+    Returns:
+        A message confirming the number of tasks added and the current total count.
     """
     global todos
     todos.extend(new_todos)
@@ -19,9 +21,11 @@ def add_todos(new_todos: list[str]) -> str:
 @tool
 def mark_todo_done(todo: str) -> str:
     """
-    Mark an individual item on the todo list as done.
+    Mark a specific task as completed.
     Args:
-        todo: The todo item to mark as done.
+        todo: The exact string of the task to mark as done. Must match an item in the current todo list.
+    Returns:
+        A confirmation message if successful, or an error message if the task was not found.
     """
     global todos, done
     if todo in todos:
@@ -34,7 +38,9 @@ def mark_todo_done(todo: str) -> str:
 @tool
 def check_done_todos() -> str:
     """
-    Read everything on the todo list that has been marked done.
+    Retrieve the list of completed tasks.
+    Returns:
+        A string representation of the list of completed tasks, or a message indicating no tasks are done.
     """
     if done:
         return str(done)
@@ -44,7 +50,9 @@ def check_done_todos() -> str:
 @tool
 def check_todos() -> str:
     """
-    Read everything on the todo list.
+    Retrieve the current list of pending tasks.
+    Returns:
+        A string representation of the list of pending tasks, or a message indicating the list is empty.
     """
     if todos:
         return str(todos)

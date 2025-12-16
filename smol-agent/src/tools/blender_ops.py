@@ -5,10 +5,13 @@ import os
 @tool
 def run_blender_script(script_path: str, save_path: str = "output.blend") -> str:
     """
-    Runs a Python script inside Blender in background mode.
+    Executes a Python script enabling Blender to perform 3D operations.
+    Run in background mode, so no UI is visible.
     Args:
-        script_path: The path to the Python script to execute in Blender.
-        save_path: The path where the Blender file should be saved (optional, defaults to output.blend).
+        script_path: The absolute or relative path to the Python script to execute.
+        save_path: The absolute or relative path where the resulting Blender file (.blend) should be saved. Defaults to 'output.blend'.
+    Returns:
+        A formatted string containing the standard output (stdout) and standard error (stderr) from the Blender process.
     """
     try:
         # Check if python script exists

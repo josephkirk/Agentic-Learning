@@ -9,12 +9,14 @@ load_dotenv()
 @tool
 def check_goal_done(goal: str, answer: str) -> str:
     """
-    Checks if the answer successfully meets the requested goal using an LLM judge.
-    Returns a JSON string with 'done' (boolean) and 'feedback' (list of strings).
-    
+    Evaluates if the provided answer successfully fulfills the stated goal using an LLM judge.
     Args:
-        goal: The requested goal to be completed.
-        answer: The answer provided to complete the goal.
+        goal: The original objective or task description.
+        answer: The final result or answer provided by the agent.
+    Returns:
+        A JSON string containing:
+        - 'done': boolean indicating if the goal is met.
+        - 'feedback': A list of strings with specific feedback or reasons for failure.
     """
     # Use a capable model for judging. 
     # Valid model IDs from HF: 'Qwen/Qwen2.5-Coder-32B-Instruct' is good.
@@ -23,6 +25,7 @@ def check_goal_done(goal: str, answer: str) -> str:
     # Check for token
     token = os.getenv("HF_TOKEN")
     if not token:
+        return "Error: HF_TOKEN environment variable not found. Please set your Hugging Face token in the .env file to use the judge."
         return "Error: HF_TOKEN environment variable not set."
 
     client = InferenceClient(model=model_id, token=token)

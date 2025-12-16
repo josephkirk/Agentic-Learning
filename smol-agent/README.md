@@ -6,8 +6,6 @@ A lightweight, agentic AI assistant built using the `smolagents` library. This a
 
 - **Task Planning**: The agent uses a built-in Todo list management system to plan, track, and verify its tasks before execution.
 - **File Operations**: Capable of writing files and creating directories to organize its work.
-  - Generates intermediate work in an `Intermediate` folder.
-  - Saves final results in an `Output` folder.
 - **Blender Integration**: precise control over Blender via Python scripts to automate 3D scene manipulation and asset creation.
 - **Web Browsing**: Equipped with DuckDuckGo search and webpage visiting capabilities to gather information.
 - **Model Flexibility**: configured to use robust inference models (e.g., Qwen via Hugging Face Inference API).
